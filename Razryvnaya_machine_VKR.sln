@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razryvnaya_machine_VKR", "Razryvnaya_machine_VKR\Razryvnaya_machine_VKR.csproj", "{7F8F5D82-C3E4-40EF-9B02-985CA4691D8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{F1C66796-6610-4AB5-A413-D0CB30695BC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7F8F5D82-C3E4-40EF-9B02-985CA4691D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F8F5D82-C3E4-40EF-9B02-985CA4691D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F8F5D82-C3E4-40EF-9B02-985CA4691D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C66796-6610-4AB5-A413-D0CB30695BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C66796-6610-4AB5-A413-D0CB30695BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C66796-6610-4AB5-A413-D0CB30695BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C66796-6610-4AB5-A413-D0CB30695BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
