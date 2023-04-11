@@ -1,0 +1,10 @@
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Razryvnaya_machine_VKR.exe.config
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Razryvnaya_machine_VKR.exe
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Razryvnaya_machine_VKR.pdb
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.csproj.AssemblyReference.cache
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.csproj.SuggestedBindingRedirects.cache
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.Properties.Resources.resources
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.csproj.GenerateResource.cache
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.csproj.CoreCompileInputs.cache
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.exe
+C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\obj\Debug\Razryvnaya_machine_VKR.pdb
