@@ -21,11 +21,12 @@ namespace ClassLibrary1
         public double lk;
         //конечный диаметр сечения
         public double d_ko;
-
         //относительное удлинение
-        public double Otn_udlin(double l0, double lk)
-        {
-            return Math.Round(100 * (lk - l0) / l0, 4);
-        }
+        //public double Otn_udlin;
+        ////public double Otn_udlin(double l0, double lk)
+        ////{
+        ////    return Math.Round(100 * (lk - l0) / l0, 4);
+        ////}
+
     }
 }
