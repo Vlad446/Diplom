@@ -87,7 +87,6 @@
       <Name>ClassLibrary1</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Folder\6719317.png" />
   </ItemGroup>

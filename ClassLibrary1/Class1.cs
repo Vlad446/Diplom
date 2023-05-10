@@ -12,11 +12,11 @@ namespace ClassLibrary1
         public double d;
         //длины сторон для образцов прямоугольного сечения
         public double a0;
-        public double bo;
+        public double b0;
         //начальная расчетная длина
         public double l0;
         //рабочая длина
-        public double dlina_raboch;
+        public double dk;
         //конечная длина
         public double lk;
         //конечный диаметр сечения

@@ -29,8 +29,8 @@ namespace Razryvnaya_machine_VKR
         int limitNagruz = 1000;
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
-
+        {
+            //this.РасчётыTableAdapter.Fill(this.dataSet1.Расчёты);
             timer1.Enabled = true;
             
             numericUpDown1.Maximum = 1000;
@@ -66,11 +66,11 @@ namespace Razryvnaya_machine_VKR
                 chart1.Series[0].Points.AddXY(timeNow, value);
                 chart1.Series[1].Points.AddXY(timeNow, ranNagruzka);
 
-                if (Convert.ToInt16(numericUpDown1.Value) > 690)
-                {
+                //if (Convert.ToInt16(numericUpDown1.Value) > 690)
+                //{
                    
 
-                }
+                //}
 
                 ////if (Convert.ToInt16(value) > max)
                 ////{                
@@ -140,32 +140,49 @@ namespace Razryvnaya_machine_VKR
             // Считывание значения исходных данных
             double d = double.Parse(textBox1.Text);
             double a0 = double.Parse(textBox2.Text);
-            double bo = double.Parse(textBox3.Text);
+            double b0 = double.Parse(textBox3.Text);
             double l0 = double.Parse(textBox4.Text);
-            double dlina_raboch = double.Parse(textBox5.Text);
+            double dk = double.Parse(textBox5.Text);
             double lk = double.Parse(textBox6.Text);
             double d_ko = double.Parse(textBox7.Text);
             double p_max = double.Parse(textBox9.Text);
 
             // Вычисляем арифметическое выражение
             double Otn_udlin = Math.Round((100 * (lk - l0) / l0),2);
-            double Otn_suzh = Math.Round((100*((3.14*Math.Pow(d,2)/4)-(3.14* Math.Pow(d_ko, 2)/ 4))/(3.14 * Math.Pow(d_ko, 2) / 4)),2);
             double p_02 = Math.Round((l0 * 0.2), 2);
-            double predel_tek = Math.Round((p_02*1000)/ (3.14 * Math.Pow(d, 2) / 4), 2);
-            double vrem_sopr = Math.Round(p_max*1000/(3.14 * Math.Pow(d, 2) / 4), 2);
+            if (radioButton3.Checked)
+            {
+                double Otn_suzh = Math.Round((100 * ((3.14 * Math.Pow(d, 2) / 4) - (3.14 * Math.Pow(d_ko, 2) / 4)) / (3.14 * Math.Pow(d_ko, 2) / 4)), 2);
+                textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
+                double predel_tek = Math.Round((p_02 * 1000) / (3.14 * Math.Pow(d, 2) / 4), 2);
+                textBox13.Text += Environment.NewLine + predel_tek.ToString();
+                double vrem_sopr = Math.Round(p_max * 1000 / (3.14 * Math.Pow(d, 2) / 4), 2);
+                textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
+            }
+            if (radioButton4.Checked)
+            {
+                double Otn_suzh = Math.Round(100 * (dk * lk - a0 * b0) / (a0 * b0), 2);
+                //double Otn_suzh = Math.Round(100*(a0*b0-dk*lk)/(dk * lk), 2);
+                textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
+                double predel_tek = Math.Round((p_02 * 1000) / (a0 * b0 ), 2);
+                textBox13.Text += Environment.NewLine + predel_tek.ToString();
+                double vrem_sopr = Math.Round(p_max * 1000 / (a0 * b0), 2);
+                textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
+            }
+            
             // Выводим результат в окно            
             textBox10.Text += Environment.NewLine + p_02.ToString();
             textBox11.Text += Environment.NewLine + Otn_udlin.ToString();
-            textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
-            textBox13.Text += Environment.NewLine + predel_tek.ToString();
-            textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
+            //textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
+            //textBox13.Text += Environment.NewLine + predel_tek.ToString();
+            //textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.Text = "6,01";
-            textBox2.Text = "10";
-            textBox3.Text = "4";
+            textBox2.Text = "64";
+            textBox3.Text = "20";
             textBox4.Text = "30";
             textBox5.Text = "60";
             textBox6.Text = "36,6";
@@ -208,6 +225,48 @@ namespace Razryvnaya_machine_VKR
             textBox3.Visible = true;
         }
 
-        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
+        } 
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox1.BackColor = Color.FromArgb(185, 250, 202);
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.BackColor = Color.FromArgb(195, 222, 250);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {            
+                //DataRow row = _1DataSet.Эмиграция_населения.NewRow();
+                //row[1] = textBox1.Text;
+                //row[2] = int.Parse(textBox2.Text);
+                //row[3] = textBox3.Text;
+                //row[4] = textBox4.Text;
+                //row[5] = textBox5.Text;
+                //row[6] = textBox6.Text;
+                //row[7] = textBox7.Text;
+                //row[8] = textBox8.Text;
+                //_1DataSet.Эмиграция_населения.Rows.Add(row);
+                //эмиграция_населенияTableAdapter.Update(_1DataSet.Эмиграция_населения);
+                //textBox1.Clear();
+                //textBox2.Clear();
+                //textBox3.Clear();
+                //textBox4.Clear();
+                //textBox5.Clear();
+                //textBox6.Clear();
+                //textBox7.Clear();
+                //textBox8.Clear();
+            
+        }
+        //double time1 = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
+        //label19.Text = time1.ToString();
+        //label25.Text = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
+
+
     }
 }
