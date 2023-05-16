@@ -1,5 +1,4 @@
-﻿using ClassLibrary1;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
+using System.Data.OleDb;
 
 namespace Razryvnaya_machine_VKR
 {
@@ -128,8 +128,8 @@ namespace Razryvnaya_machine_VKR
             { panel1.BackColor = Color.Red; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click_1(object sender, EventArgs e)
+        {       
             // Удаляем данные с ячейки
             textBox10.Text = "";
             textBox11.Text = "";
@@ -177,9 +177,8 @@ namespace Razryvnaya_machine_VKR
             //textBox13.Text += Environment.NewLine + predel_tek.ToString();
             //textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
+        private void button2_Click_1(object sender, EventArgs e)
+        {       
             textBox1.Text = "6,01";
             textBox2.Text = "64";
             textBox3.Text = "20";
@@ -189,7 +188,7 @@ namespace Razryvnaya_machine_VKR
             textBox7.Text = "4,61";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             e.Graphics.Clear(panel1.Parent.BackColor);
@@ -212,35 +211,35 @@ namespace Razryvnaya_machine_VKR
             }
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
+        private void radioButton3_CheckedChanged_1(object sender, EventArgs e)
+        {        
             textBox1.Visible = true;
             textBox2.Visible = false;
             textBox3.Visible = false;
         }
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
+        private void radioButton4_CheckedChanged_1(object sender, EventArgs e)
+        {       
             textBox1.Visible = false;
             textBox2.Visible = true;
             textBox3.Visible = true;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
         } 
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
         {
             pictureBox1.BackColor = Color.FromArgb(185, 250, 202);
         }
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
             pictureBox1.BackColor = Color.FromArgb(195, 222, 250);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {            
                 //DataRow row = _1DataSet.Эмиграция_населения.NewRow();
                 //row[1] = textBox1.Text;
@@ -262,7 +261,54 @@ namespace Razryvnaya_machine_VKR
                 //textBox7.Clear();
                 //textBox8.Clear();
             
+        }        
+
+        private void оПрограммеToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
         }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        
+        private void button_download_Click(object sender, EventArgs e)
+        {
+            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=DB\\Database.mdb";
+            OleDbConnection dbConnection = new OleDbConnection(connectionString);
+            dbConnection.Open();
+            string query = "SELECT * FROM Report";
+            OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
+            OleDbDataReader dbReader = dbCommand.ExecuteReader();
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_update_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //double time1 = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
         //label19.Text = time1.ToString();
         //label25.Text = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
