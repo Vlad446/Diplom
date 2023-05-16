@@ -13,6 +13,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Data.OleDb;
+using System.Xml.Linq;
+using Microsoft.SqlServer.Server;
 
 namespace Razryvnaya_machine_VKR
 {
@@ -22,7 +24,23 @@ namespace Razryvnaya_machine_VKR
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            label26.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            dataGridView1.ColumnCount = 7;
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Номер испытания";
+            dataGridView1.Columns[2].Name = "Дата испытания";
+            dataGridView1.Columns[3].Name = "Относительное удлиннение, %";
+            dataGridView1.Columns[4].Name = "Относительное сужение, %";
+            dataGridView1.Columns[5].Name = "Предел текучести (условный), кгс/мм²";
+            dataGridView1.Columns[6].Name = "Временное сопротивление, кгс/мм²";
 
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private int _countSecond = 0;
@@ -109,10 +127,6 @@ namespace Razryvnaya_machine_VKR
                 //}
                 textBox9.Text = secMax.ToString();
 
-
-
-
-
                 _countSecond++;
                 if (_countSecond == 60)
                 {
@@ -126,6 +140,16 @@ namespace Razryvnaya_machine_VKR
             }
            else
             { panel1.BackColor = Color.Red; }
+            _countSecond++;
+            if (_countSecond == 60)
+            {
+                _countSecond = 0;
+                chart1.ChartAreas[0].AxisX.Minimum = DateTime.Now.ToOADate();
+                chart1.ChartAreas[0].AxisX.Maximum = DateTime.Now.AddMinutes(1).ToOADate();
+
+                chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
+                chart1.ChartAreas[0].AxisX.Interval = 6;
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -229,15 +253,7 @@ namespace Razryvnaya_machine_VKR
             System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
         } 
 
-        private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
-        {
-            pictureBox1.BackColor = Color.FromArgb(185, 250, 202);
-        }
-
-        private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
-        {
-            pictureBox1.BackColor = Color.FromArgb(195, 222, 250);
-        }
+       
 
         private void button3_Click_1(object sender, EventArgs e)
         {            
@@ -283,22 +299,81 @@ namespace Razryvnaya_machine_VKR
         {
             Close();
         }
-        
+        int ID=1;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add(ID, textBox8.Text, label26.Text, textBox11.Text, textBox12.Text, textBox13.Text, textBox14.Text);
+            ++ID;
+        }
+
         private void button_download_Click(object sender, EventArgs e)
         {
-            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=DB\\Database.mdb";
+            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
             dbConnection.Open();
             string query = "SELECT * FROM Report";
             OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
             OleDbDataReader dbReader = dbCommand.ExecuteReader();
+
+            if (dbReader.HasRows == false)
+            {
+                MessageBox.Show("Данные не найдены!", "Ошибка!");
+            }
+            else
+            {
+                while (dbReader.Read())
+                {
+                    dataGridView1.Rows.Add(dbReader["ID"], dbReader["Номер испытания"], dbReader["Дата испытания"], dbReader["Относительное удлиннение, %"], dbReader["Относительное сужение, %"], dbReader["Предел текучести (условный), кгс/мм²"], dbReader["Временное сопротивление, кгс/мм²"]);
+                }
+            }
+            dbReader.Close();
+            dbConnection.Close();
         }
+
+       
 
         private void button_add_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count !=1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
 
+            int index = dataGridView1.SelectedRows[0].Index;
+
+            if (dataGridView1.Rows[index].Cells[0].Value==null ||
+                dataGridView1.Rows[index].Cells[1].Value == null ||
+                dataGridView1.Rows[index].Cells[2].Value == null ||
+                dataGridView1.Rows[index].Cells[3].Value == null ||
+                dataGridView1.Rows[index].Cells[4].Value == null ||
+                dataGridView1.Rows[index].Cells[5].Value == null ||
+                dataGridView1.Rows[index].Cells[6].Value == null)
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
+
+            string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
+            string nomer = dataGridView1.Rows[index].Cells[1].Value.ToString();            
+            string data = dataGridView1.Rows[index].Cells[2].Value.ToString();            
+            string otn1 =dataGridView1.Rows[index].Cells[3].Value.ToString();
+            string otn2 =dataGridView1.Rows[index].Cells[4].Value.ToString();
+            string predel= dataGridView1.Rows[index].Cells[5].Value.ToString();
+            string vrem =dataGridView1.Rows[index].Cells[6].Value.ToString();
+
+            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
+            OleDbConnection dbConnection = new OleDbConnection(connectionString);
+            dbConnection.Open();
+            string query = $"INSERT INTO Report VALUES ("+id+",'"+nomer+"','"+data+"','"+otn1+"','"+otn2+"','"+predel+"','"+vrem+"')";
+            OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
+            if (dbCommand.ExecuteNonQuery()!=1)
+                MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+            else
+                MessageBox.Show("Данные добавлены!", "Внимание!");
+            dbConnection.Close();
         }
-
+        
         private void button_update_Click(object sender, EventArgs e)
         {
 
@@ -307,11 +382,11 @@ namespace Razryvnaya_machine_VKR
         private void button_delete_Click(object sender, EventArgs e)
         {
 
-        }
+        }    
 
-        //double time1 = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
-        //label19.Text = time1.ToString();
-        //label25.Text = DateTime.Now.ToString("dd.MM.yyyy, HH.mm.ss");
+        
+      
+        
 
 
     }
