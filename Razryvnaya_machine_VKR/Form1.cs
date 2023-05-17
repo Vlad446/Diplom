@@ -457,5 +457,11 @@ namespace Razryvnaya_machine_VKR
         {
             System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Database.mdb");
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 example = new Form2();
+            example.Show();            
+        }
     }
 }
