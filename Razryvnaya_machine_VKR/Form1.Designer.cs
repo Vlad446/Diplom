@@ -38,19 +38,14 @@ namespace Razryvnaya_machine_VKR
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataSet1 = new System.Data.DataSet();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_update = new System.Windows.Forms.Button();
             this.button_add = new System.Windows.Forms.Button();
             this.button_download = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,7 +105,13 @@ namespace Razryvnaya_machine_VKR
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -136,6 +137,7 @@ namespace Razryvnaya_machine_VKR
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
+            this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.dataGridView1);
@@ -143,27 +145,49 @@ namespace Razryvnaya_machine_VKR
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1289, 550);
+            this.tabPage2.Size = new System.Drawing.Size(989, 550);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Отчёт";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.Location = new System.Drawing.Point(826, 336);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(157, 45);
+            this.button5.TabIndex = 108;
+            this.button5.Text = "Открыть базу данных";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.Location = new System.Drawing.Point(826, 406);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(157, 45);
+            this.button4.TabIndex = 107;
+            this.button4.Text = "Сформировать отчёт";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
             this.groupBox2.Controls.Add(this.button_delete);
             this.groupBox2.Controls.Add(this.button_update);
             this.groupBox2.Controls.Add(this.button_add);
             this.groupBox2.Controls.Add(this.button_download);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(916, 62);
+            this.groupBox2.Location = new System.Drawing.Point(843, 77);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 270);
+            this.groupBox2.Size = new System.Drawing.Size(126, 232);
             this.groupBox2.TabIndex = 106;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Действия";
             // 
             // button_delete
             // 
-            this.button_delete.Location = new System.Drawing.Point(42, 189);
+            this.button_delete.Location = new System.Drawing.Point(0, 187);
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(115, 31);
             this.button_delete.TabIndex = 3;
@@ -173,7 +197,7 @@ namespace Razryvnaya_machine_VKR
             // 
             // button_update
             // 
-            this.button_update.Location = new System.Drawing.Point(42, 143);
+            this.button_update.Location = new System.Drawing.Point(0, 141);
             this.button_update.Name = "button_update";
             this.button_update.Size = new System.Drawing.Size(115, 31);
             this.button_update.TabIndex = 2;
@@ -183,7 +207,7 @@ namespace Razryvnaya_machine_VKR
             // 
             // button_add
             // 
-            this.button_add.Location = new System.Drawing.Point(42, 95);
+            this.button_add.Location = new System.Drawing.Point(0, 93);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(115, 31);
             this.button_add.TabIndex = 1;
@@ -193,7 +217,7 @@ namespace Razryvnaya_machine_VKR
             // 
             // button_download
             // 
-            this.button_download.Location = new System.Drawing.Point(42, 45);
+            this.button_download.Location = new System.Drawing.Point(0, 43);
             this.button_download.Name = "button_download";
             this.button_download.Size = new System.Drawing.Size(115, 31);
             this.button_download.TabIndex = 0;
@@ -203,6 +227,7 @@ namespace Razryvnaya_machine_VKR
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(222)))), ((int)(((byte)(230)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -214,44 +239,8 @@ namespace Razryvnaya_machine_VKR
             this.Column7});
             this.dataGridView1.Location = new System.Drawing.Point(3, 30);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(786, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(817, 472);
             this.dataGridView1.TabIndex = 105;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Номер испытания";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "label26";
-            this.Column3.HeaderText = "Дата испытания";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Относительное удлиннение, %";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Относительное сужение, %";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Предел текучести (условный), кгс/мм²";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Временное сопротивление, кгс/мм²";
-            this.Column7.Name = "Column7";
             // 
             // menuStrip2
             // 
@@ -260,7 +249,7 @@ namespace Razryvnaya_machine_VKR
             this.toolStripMenuItem2});
             this.menuStrip2.Location = new System.Drawing.Point(3, 3);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1283, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(983, 24);
             this.menuStrip2.TabIndex = 104;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -333,7 +322,7 @@ namespace Razryvnaya_machine_VKR
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1289, 550);
+            this.tabPage1.Size = new System.Drawing.Size(925, 550);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Расчёты";
             // 
@@ -342,9 +331,8 @@ namespace Razryvnaya_machine_VKR
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(658, 337);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(109, 13);
+            this.label26.Size = new System.Drawing.Size(0, 13);
             this.label26.TabIndex = 102;
-            this.label26.Text = "10.05.2023, 23.00.13";
             // 
             // textBox8
             // 
@@ -815,7 +803,7 @@ namespace Razryvnaya_machine_VKR
             this.выйтиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 3);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1283, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(919, 24);
             this.menuStrip1.TabIndex = 103;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -840,25 +828,51 @@ namespace Razryvnaya_machine_VKR
             this.tabControl1.Location = new System.Drawing.Point(0, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1297, 576);
+            this.tabControl1.Size = new System.Drawing.Size(997, 576);
             this.tabControl1.TabIndex = 54;
             // 
-            // button4
+            // Column1
             // 
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(869, 369);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 90);
-            this.button4.TabIndex = 107;
-            this.button4.Text = "Сформировать отчёт";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Номер_испытания";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "label26";
+            this.Column3.HeaderText = "Дата_испытания";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Относительное_удлиннение,%";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Относительное_сужение,%";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Предел_текучести_(условный),кгс/мм²";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Временное_сопротивление,кгс/мм²";
+            this.Column7.Name = "Column7";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(222)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1306, 597);
+            this.ClientSize = new System.Drawing.Size(1035, 597);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
@@ -953,6 +967,8 @@ namespace Razryvnaya_machine_VKR
         private System.Windows.Forms.Button button_update;
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Button button_download;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -960,7 +976,6 @@ namespace Razryvnaya_machine_VKR
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -323,7 +323,7 @@ namespace Razryvnaya_machine_VKR
             {
                 while (dbReader.Read())
                 {
-                    dataGridView1.Rows.Add(dbReader["ID"], dbReader["Номер испытания"], dbReader["Дата испытания"], dbReader["Относительное удлиннение, %"], dbReader["Относительное сужение, %"], dbReader["Предел текучести (условный), кгс/мм²"], dbReader["Временное сопротивление, кгс/мм²"]);
+                    dataGridView1.Rows.Add(dbReader["ID"], dbReader["Номер_испытания"], dbReader["Дата_испытания"], dbReader["Относительное_удлиннение,%"], dbReader["Относительное_сужение,%"], dbReader["Предел_текучести_(условный),кгс/мм²"], dbReader["Временное_сопротивление,кгс/мм²"]);
                 }
             }
             dbReader.Close();
@@ -367,27 +367,95 @@ namespace Razryvnaya_machine_VKR
             dbConnection.Open();
             string query = $"INSERT INTO Report VALUES ("+id+",'"+nomer+"','"+data+"','"+otn1+"','"+otn2+"','"+predel+"','"+vrem+"')";
             OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
-            if (dbCommand.ExecuteNonQuery()!=1)
+            if (dbCommand.ExecuteNonQuery() != 1)
                 MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
             else
-                MessageBox.Show("Данные добавлены!", "Внимание!");
+            {
+                MessageBox.Show("Данные добавлены!", "Внимание!"); 
+            }
             dbConnection.Close();
         }
-        
+
         private void button_update_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
 
+            int index = dataGridView1.SelectedRows[0].Index;
+
+            if (dataGridView1.Rows[index].Cells[0].Value == null ||
+                dataGridView1.Rows[index].Cells[1].Value == null ||
+                dataGridView1.Rows[index].Cells[2].Value == null ||
+                dataGridView1.Rows[index].Cells[3].Value == null ||
+                dataGridView1.Rows[index].Cells[4].Value == null ||
+                dataGridView1.Rows[index].Cells[5].Value == null ||
+                dataGridView1.Rows[index].Cells[6].Value == null)
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
+
+            string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
+            string nomer = dataGridView1.Rows[index].Cells[1].Value.ToString();
+            string data = dataGridView1.Rows[index].Cells[2].Value.ToString();
+            string otn1 = dataGridView1.Rows[index].Cells[3].Value.ToString();
+            string otn2 = dataGridView1.Rows[index].Cells[4].Value.ToString();
+            string predel = dataGridView1.Rows[index].Cells[5].Value.ToString();
+            string vrem = dataGridView1.Rows[index].Cells[6].Value.ToString();
+
+            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
+            OleDbConnection dbConnection = new OleDbConnection(connectionString);
+            dbConnection.Open();
+            string query = "UPDATE Report SET [Номер_испытания] = '" + nomer + "', [Дата_испытания] = '" + data + "', [Относительное_удлиннение,%] = '" + otn1 + "', [Относительное_сужение,%] = '" + otn2 + "', [Предел_текучести_(условный),кгс/мм²] = '" + predel + "', [Временное_сопротивление,кгс/мм²] = '" + vrem + "' WHERE ID = " + id;
+            OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
+            if (dbCommand.ExecuteNonQuery() != 1)
+                MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+            else
+            {
+                MessageBox.Show("Данные изменены!", "Внимание!");
+            }
+            dbConnection.Close();
         }
 
         private void button_delete_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
 
-        }    
+            int index = dataGridView1.SelectedRows[0].Index;
 
-        
-      
-        
+            if (dataGridView1.Rows[index].Cells[0].Value == null)
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
 
+            string id = dataGridView1.Rows[index].Cells[0].Value.ToString();           
 
+            string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
+            OleDbConnection dbConnection = new OleDbConnection(connectionString);
+            dbConnection.Open();
+            string query = "DELETE FROM Report WHERE ID = " + id;
+            OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
+            if (dbCommand.ExecuteNonQuery() != 1)
+                MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+            else
+            { 
+                MessageBox.Show("Данные удалены!", "Внимание!");
+                dataGridView1.Rows.RemoveAt(index);
+            }
+            dbConnection.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Database.mdb");
+        }
     }
 }
