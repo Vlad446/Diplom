@@ -25,14 +25,16 @@ namespace Razryvnaya_machine_VKR
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             label26.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            dataGridView1.ColumnCount = 7;
+            dataGridView1.ColumnCount = 9;
             dataGridView1.Columns[0].Name = "ID";
-            dataGridView1.Columns[1].Name = "Номер испытания";
-            dataGridView1.Columns[2].Name = "Дата испытания";
-            dataGridView1.Columns[3].Name = "Относительное удлиннение, %";
-            dataGridView1.Columns[4].Name = "Относительное сужение, %";
-            dataGridView1.Columns[5].Name = "Предел текучести (условный), кгс/мм²";
-            dataGridView1.Columns[6].Name = "Временное сопротивление, кгс/мм²";
+            dataGridView1.Columns[1].Name = "Номер_испытания";
+            dataGridView1.Columns[2].Name = "Дата_испытания";
+            dataGridView1.Columns[3].Name = "Начальный_диаметр_сечения,мм";
+            dataGridView1.Columns[4].Name = "Диаметр_сечения_после_разрыва,мм";
+            dataGridView1.Columns[5].Name = "Относительное_удлиннение,%";
+            dataGridView1.Columns[6].Name = "Относительное_сужение,%";
+            dataGridView1.Columns[7].Name = "Предел_текучести_(условный),кгс/мм²";       
+            dataGridView1.Columns[8].Name = "Временное_сопротивление,кгс/мм²";
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -41,6 +43,8 @@ namespace Razryvnaya_machine_VKR
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private int _countSecond = 0;
@@ -153,14 +157,32 @@ namespace Razryvnaya_machine_VKR
         }
 
         private void button1_Click_1(object sender, EventArgs e)
-        {       
+        {           
             // Удаляем данные с ячейки
             textBox10.Text = "";
             textBox11.Text = "";
             textBox12.Text = "";
             textBox13.Text = "";
             textBox14.Text = "";
-
+            // Сверяем значения исходных данных
+            if (textBox1.Text == "" ||
+                textBox2.Text == "" ||
+                textBox3.Text == "" ||
+                textBox4.Text == "" ||
+                textBox5.Text == "" ||
+                textBox6.Text == "" ||
+                textBox7.Text == "")
+            {
+                MessageBox.Show("Заполните исходные данные", "Внимание!");
+                return;
+            }
+            // Все ли поля заполнены
+            if (textBox9.Text == "" ||
+                textBox10.Text == "")
+            {
+                MessageBox.Show("Заполните значение максимума и P02", "Внимание!");
+                return;
+            }           
             // Считывание значения исходных данных
             double d = double.Parse(textBox1.Text);
             double a0 = double.Parse(textBox2.Text);
@@ -170,6 +192,28 @@ namespace Razryvnaya_machine_VKR
             double lk = double.Parse(textBox6.Text);
             double d_ko = double.Parse(textBox7.Text);
             double p_max = double.Parse(textBox9.Text);
+                        
+            // Сверяем значения исходных данных
+            if (d>30 | d < 0)
+            {
+                MessageBox.Show("Начальный диаметр может быть в пределах от 0 до 30 мм", "Внимание!");
+                return;
+            }
+            if (l0 > 300 | l0 < 0)
+            {
+                MessageBox.Show("Начальная расчетная длина образца образца может быть в пределах от 0 до 30 мм", "Внимание!");
+                return;
+            }
+            if (a0 > 30 | a0 < 0)
+            {
+                MessageBox.Show("Начальная толщина образца может быть в пределах от 0 до 30 мм", "Внимание!");
+                return;
+            }
+            if (b0 > 30 | b0 < 0)
+            {
+                MessageBox.Show("Начальная ширина образца может быть в пределах от 0 до 30 мм", "Внимание!");
+                return;
+            }
 
             // Вычисляем арифметическое выражение
             double Otn_udlin = Math.Round((100 * (lk - l0) / l0),2);
@@ -204,7 +248,7 @@ namespace Razryvnaya_machine_VKR
         private void button2_Click_1(object sender, EventArgs e)
         {       
             textBox1.Text = "6,01";
-            textBox2.Text = "64";
+            textBox2.Text = "6,4";
             textBox3.Text = "20";
             textBox4.Text = "30";
             textBox5.Text = "60";
@@ -302,7 +346,7 @@ namespace Razryvnaya_machine_VKR
         int ID=1;
         private void button3_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(ID, textBox8.Text, label26.Text, textBox11.Text, textBox12.Text, textBox13.Text, textBox14.Text);
+            dataGridView1.Rows.Add(ID, textBox8.Text, label26.Text, textBox1.Text, textBox7.Text, textBox11.Text, textBox12.Text, textBox13.Text, textBox14.Text);
             ++ID;
         }
 
@@ -323,7 +367,7 @@ namespace Razryvnaya_machine_VKR
             {
                 while (dbReader.Read())
                 {
-                    dataGridView1.Rows.Add(dbReader["ID"], dbReader["Номер_испытания"], dbReader["Дата_испытания"], dbReader["Относительное_удлиннение,%"], dbReader["Относительное_сужение,%"], dbReader["Предел_текучести_(условный),кгс/мм²"], dbReader["Временное_сопротивление,кгс/мм²"]);
+                    dataGridView1.Rows.Add(dbReader["ID"], dbReader["Номер_испытания"], dbReader["Дата_испытания"], dbReader["Начальный_диаметр_сечения,мм"], dbReader["Диаметр_сечения_после_разрыва,мм"], dbReader["Относительное_удлиннение,%"], dbReader["Относительное_сужение,%"], dbReader["Предел_текучести_(условный),кгс/мм²"], dbReader["Временное_сопротивление,кгс/мм²"]);
                 }
             }
             dbReader.Close();
@@ -348,7 +392,9 @@ namespace Razryvnaya_machine_VKR
                 dataGridView1.Rows[index].Cells[3].Value == null ||
                 dataGridView1.Rows[index].Cells[4].Value == null ||
                 dataGridView1.Rows[index].Cells[5].Value == null ||
-                dataGridView1.Rows[index].Cells[6].Value == null)
+                dataGridView1.Rows[index].Cells[6].Value == null ||
+                dataGridView1.Rows[index].Cells[7].Value == null ||
+                dataGridView1.Rows[index].Cells[8].Value == null)
             {
                 MessageBox.Show("Не все данные введены!", "Внимание!");
                 return;
@@ -357,15 +403,17 @@ namespace Razryvnaya_machine_VKR
             string id = dataGridView1.Rows[index].Cells[0].Value.ToString();
             string nomer = dataGridView1.Rows[index].Cells[1].Value.ToString();            
             string data = dataGridView1.Rows[index].Cells[2].Value.ToString();            
-            string otn1 =dataGridView1.Rows[index].Cells[3].Value.ToString();
-            string otn2 =dataGridView1.Rows[index].Cells[4].Value.ToString();
-            string predel= dataGridView1.Rows[index].Cells[5].Value.ToString();
-            string vrem =dataGridView1.Rows[index].Cells[6].Value.ToString();
+            string nach_d =dataGridView1.Rows[index].Cells[3].Value.ToString();
+            string konech_d = dataGridView1.Rows[index].Cells[4].Value.ToString();
+            string otn1 = dataGridView1.Rows[index].Cells[5].Value.ToString();
+            string otn2 =dataGridView1.Rows[index].Cells[6].Value.ToString();
+            string predel= dataGridView1.Rows[index].Cells[7].Value.ToString();
+            string vrem =dataGridView1.Rows[index].Cells[8].Value.ToString();
 
             string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
             dbConnection.Open();
-            string query = $"INSERT INTO Report VALUES ("+id+",'"+nomer+"','"+data+"','"+otn1+"','"+otn2+"','"+predel+"','"+vrem+"')";
+            string query = $"INSERT INTO Report VALUES ("+id+",'"+nomer+"','"+data+ "','"+nach_d+ "','"+konech_d+"','" + otn1+"','"+otn2+"','"+predel+"','"+vrem+"')";
             OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
             if (dbCommand.ExecuteNonQuery() != 1)
                 MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
@@ -392,7 +440,9 @@ namespace Razryvnaya_machine_VKR
                 dataGridView1.Rows[index].Cells[3].Value == null ||
                 dataGridView1.Rows[index].Cells[4].Value == null ||
                 dataGridView1.Rows[index].Cells[5].Value == null ||
-                dataGridView1.Rows[index].Cells[6].Value == null)
+                dataGridView1.Rows[index].Cells[6].Value == null ||
+                dataGridView1.Rows[index].Cells[7].Value == null ||
+                dataGridView1.Rows[index].Cells[8].Value == null)
             {
                 MessageBox.Show("Не все данные введены!", "Внимание!");
                 return;
@@ -402,14 +452,16 @@ namespace Razryvnaya_machine_VKR
             string nomer = dataGridView1.Rows[index].Cells[1].Value.ToString();
             string data = dataGridView1.Rows[index].Cells[2].Value.ToString();
             string otn1 = dataGridView1.Rows[index].Cells[3].Value.ToString();
-            string otn2 = dataGridView1.Rows[index].Cells[4].Value.ToString();
-            string predel = dataGridView1.Rows[index].Cells[5].Value.ToString();
-            string vrem = dataGridView1.Rows[index].Cells[6].Value.ToString();
+            string nach_d = dataGridView1.Rows[index].Cells[4].Value.ToString();
+            string konech_d = dataGridView1.Rows[index].Cells[5].Value.ToString();
+            string otn2 = dataGridView1.Rows[index].Cells[6].Value.ToString();
+            string predel = dataGridView1.Rows[index].Cells[7].Value.ToString();
+            string vrem = dataGridView1.Rows[index].Cells[8].Value.ToString();
 
             string connectionString = "provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb";
             OleDbConnection dbConnection = new OleDbConnection(connectionString);
             dbConnection.Open();
-            string query = "UPDATE Report SET [Номер_испытания] = '" + nomer + "', [Дата_испытания] = '" + data + "', [Относительное_удлиннение,%] = '" + otn1 + "', [Относительное_сужение,%] = '" + otn2 + "', [Предел_текучести_(условный),кгс/мм²] = '" + predel + "', [Временное_сопротивление,кгс/мм²] = '" + vrem + "' WHERE ID = " + id;
+            string query = "UPDATE Report SET [Номер_испытания] = '" + nomer + "', [Дата_испытания] = '" + data + "',[Начальный_диаметр_сечения,мм] = '" + nach_d +"',[Диаметр_сечения_после_разрыва,мм] = '" +konech_d + "', [Относительное_удлиннение,%] = '" + otn1 + "', [Относительное_сужение,%] = '" + otn2 + "', [Предел_текучести_(условный),кгс/мм²] = '" + predel + "', [Временное_сопротивление,кгс/мм²] = '" + vrem + "' WHERE ID = " + id;
             OleDbCommand dbCommand = new OleDbCommand(query, dbConnection);
             if (dbCommand.ExecuteNonQuery() != 1)
                 MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
@@ -459,9 +511,9 @@ namespace Razryvnaya_machine_VKR
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
-            Form2 example = new Form2();
-            example.Show();            
+        {            
+            report1.Load("Report_params.frx");
+            report1.Show();
         }
     }
 }
