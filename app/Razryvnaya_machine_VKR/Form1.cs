@@ -24,7 +24,9 @@ namespace Razryvnaya_machine_VKR
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+
             label26.Text = DateTime.Now.ToString("dd.MM.yyyy");
+
             dataGridView1.ColumnCount = 9;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Номер_испытания";
@@ -51,8 +53,7 @@ namespace Razryvnaya_machine_VKR
         int limitNagruz = 1000;
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            //this.РасчётыTableAdapter.Fill(this.dataSet1.Расчёты);
+        {            
             timer1.Enabled = true;
             
             numericUpDown1.Maximum = 1000;
@@ -80,43 +81,12 @@ namespace Razryvnaya_machine_VKR
                 double ranNagruzka = random.Next(0, 1000);
                 label19.Text = ranNagruzka.ToString();
 
-
-
                 DateTime timeNow = DateTime.Now;
                 int value = Convert.ToInt32(numericUpDown1.Value);
 
                 chart1.Series[0].Points.AddXY(timeNow, value);
                 chart1.Series[1].Points.AddXY(timeNow, ranNagruzka);
-
-                //if (Convert.ToInt16(numericUpDown1.Value) > 690)
-                //{
-                   
-
-                //}
-
-                ////if (Convert.ToInt16(value) > max)
-                ////{                
-                ////    max = value;
-
-                ////}
-                ////textBox9.Text = max.ToString();
-                //max = Math.Max(0, value);
-
-                //if (max> secMax)
-                //{
-                //    secMax=max;
-                //}
-                //else { textBox9.Text = value.ToString(); }
-                //int[] array = new int[0];
-                //NumericUpDown[] nud = new NumericUpDown[] {numericUpDown1};
-                //for (int i = 0; i <= nud.Length; i++)
-                //{
-                //    array[i] = Convert.ToInt32(nud[i].Value);
-                //}
-                //int maxValue = array.Max();
-                //textBox9.Text = array.ToString();
-                //textBox9.Text = Math.Max(0, array).ToString();
-                //textBox9.Text = Math.Max(0, numericUpDown1.Value).ToString();
+                              
                 int max = 0;
                 int secMax = 0;
                 if (Convert.ToInt16(numericUpDown1.Value) > max)
@@ -125,10 +95,7 @@ namespace Razryvnaya_machine_VKR
 
                 }
                 secMax = max;
-                //else
-                //{
-                //    secMax = max;
-                //}
+               
                 textBox9.Text = secMax.ToString();
 
                 _countSecond++;
@@ -176,13 +143,7 @@ namespace Razryvnaya_machine_VKR
                 MessageBox.Show("Заполните исходные данные", "Внимание!");
                 return;
             }
-            // Все ли поля заполнены
-            if (textBox9.Text == "" ||
-                textBox10.Text == "")
-            {
-                MessageBox.Show("Заполните значение максимума и P02", "Внимание!");
-                return;
-            }           
+                  
             // Считывание значения исходных данных
             double d = double.Parse(textBox1.Text);
             double a0 = double.Parse(textBox2.Text);
@@ -192,9 +153,20 @@ namespace Razryvnaya_machine_VKR
             double lk = double.Parse(textBox6.Text);
             double d_ko = double.Parse(textBox7.Text);
             double p_max = double.Parse(textBox9.Text);
-                        
+            double p_02 = Math.Round((l0 * 0.2), 2);
+            textBox10.Text += Environment.NewLine + p_02.ToString();
+            double Otn_udlin = Math.Round((100 * (lk - l0) / l0), 2);           
+            textBox11.Text += Environment.NewLine + Otn_udlin.ToString();
+            // Все ли поля заполнены
+            if (textBox9.Text == "" ||
+                textBox10.Text == "")
+            {
+                MessageBox.Show("Заполните значение максимума и P02", "Внимание!");
+                return;
+            }
+
             // Сверяем значения исходных данных
-            if (d>30 | d < 0)
+            if (d > 30 | d < 0)
             {
                 MessageBox.Show("Начальный диаметр может быть в пределах от 0 до 30 мм", "Внимание!");
                 return;
@@ -216,8 +188,8 @@ namespace Razryvnaya_machine_VKR
             }
 
             // Вычисляем арифметическое выражение
-            double Otn_udlin = Math.Round((100 * (lk - l0) / l0),2);
-            double p_02 = Math.Round((l0 * 0.2), 2);
+            
+                      
             if (radioButton3.Checked)
             {
                 double Otn_suzh = Math.Round((100 * ((3.14 * Math.Pow(d, 2) / 4) - (3.14 * Math.Pow(d_ko, 2) / 4)) / (3.14 * Math.Pow(d_ko, 2) / 4)), 2);
@@ -229,8 +201,7 @@ namespace Razryvnaya_machine_VKR
             }
             if (radioButton4.Checked)
             {
-                double Otn_suzh = Math.Round(100 * (dk * lk - a0 * b0) / (a0 * b0), 2);
-                //double Otn_suzh = Math.Round(100*(a0*b0-dk*lk)/(dk * lk), 2);
+                double Otn_suzh = Math.Round(100 * (dk * lk - a0 * b0) / (a0 * b0), 2);                
                 textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
                 double predel_tek = Math.Round((p_02 * 1000) / (a0 * b0 ), 2);
                 textBox13.Text += Environment.NewLine + predel_tek.ToString();
@@ -238,12 +209,8 @@ namespace Razryvnaya_machine_VKR
                 textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
             }
             
-            // Выводим результат в окно            
-            textBox10.Text += Environment.NewLine + p_02.ToString();
-            textBox11.Text += Environment.NewLine + Otn_udlin.ToString();
-            //textBox12.Text += Environment.NewLine + Otn_suzh.ToString();
-            //textBox13.Text += Environment.NewLine + predel_tek.ToString();
-            //textBox14.Text += Environment.NewLine + vrem_sopr.ToString();
+           
+            
         }
         private void button2_Click_1(object sender, EventArgs e)
         {       
@@ -290,42 +257,11 @@ namespace Razryvnaya_machine_VKR
             textBox1.Visible = false;
             textBox2.Visible = true;
             textBox3.Visible = true;
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
-        } 
-
-       
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {            
-                //DataRow row = _1DataSet.Эмиграция_населения.NewRow();
-                //row[1] = textBox1.Text;
-                //row[2] = int.Parse(textBox2.Text);
-                //row[3] = textBox3.Text;
-                //row[4] = textBox4.Text;
-                //row[5] = textBox5.Text;
-                //row[6] = textBox6.Text;
-                //row[7] = textBox7.Text;
-                //row[8] = textBox8.Text;
-                //_1DataSet.Эмиграция_населения.Rows.Add(row);
-                //эмиграция_населенияTableAdapter.Update(_1DataSet.Эмиграция_населения);
-                //textBox1.Clear();
-                //textBox2.Clear();
-                //textBox3.Clear();
-                //textBox4.Clear();
-                //textBox5.Clear();
-                //textBox6.Clear();
-                //textBox7.Clear();
-                //textBox8.Clear();
-            
-        }        
+        }   
 
         private void оПрограммеToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,7 +271,7 @@ namespace Razryvnaya_machine_VKR
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\Folder\rukovodstvo.pdf");
 
         }
 
@@ -507,7 +443,7 @@ namespace Razryvnaya_machine_VKR
 
         private void button5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\Razryvnaya_machine_VKR\bin\Debug\Database.mdb");
+            System.Diagnostics.Process.Start(@"C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\Database.mdb");
         }
 
         private void button4_Click(object sender, EventArgs e)

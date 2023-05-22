@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/21/2023 11:51:43" ReportInfo.Modified="05/22/2023 17:07:40" ReportInfo.CreatorVersion="2023.2.12.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/21/2023 11:51:43" ReportInfo.Modified="05/23/2023 00:38:54" ReportInfo.CreatorVersion="2023.2.12.0">
   <Dictionary>
-    <MsAccessDataConnection Name="Connection" ConnectionString="rijcmlqoDWEBRlB24atBGpA/h9/NcJd7NSF1v8voegt4ZjxrkxX8upuBvz/e4KCOYRa7/yaHY8ffnr9LtNnzjCPlBwDDTYQaQi4WDldOpqcLYuC6TRDLQjDL987tBkxa2kY527I3mB1iEBgfGe6ltBEoeigofnuwRE56jj0MpokqL+FHsyEhFvpN5gcbeLaeZH7Nbydyex5uDnO9CUbSaObRHgYbATHYM6bavZgTtmJTFhs8Eg=">
+    <MsAccessDataConnection Name="Connection" ConnectionString="rijcmlqoDWEBRlB24atBGpA/h9/NcJd7NSF1v8voegt4ZjxrkxX8upuBvz/e4KCOYRa7/yaHY8ffnr9LtNnzjCPlBwDDTYQaQi4WDldOpqcLYuC6TRDLQjDL987tBkxa2kY527I3mB1iEBgfGe6ltBEoeigodUicMM/EMwPJddxwoMiaeXD9FUTOiLDQDTFHIsOeVQR15Typ3k3jaA0h4FL+lmKx/78+CCKNucqiAGQD8vob2vmx3rZOP+bkIKeG186vf1B">
       <TableDataSource Name="Report" DataType="System.Int32" Enabled="true" TableName="Report">
         <Column Name="ID" DataType="System.Int32"/>
         <Column Name="Номер_испытания" DataType="System.String"/>
