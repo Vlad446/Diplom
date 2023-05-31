@@ -75,7 +75,6 @@ C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razry
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\SqlServerTypes\x86\msvcr120.dll
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
-C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\Report_params.frx
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\Database.mdb
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\Razryvnaya_machine_VKR.exe.config
 C:\Users\burda\OneDrive\Рабочий стол\Razryvnaya_machine_VKR\app\Razryvnaya_machine_VKR\bin\Debug\Razryvnaya_machine_VKR.exe

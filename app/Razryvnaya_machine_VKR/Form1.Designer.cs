@@ -47,15 +47,6 @@ namespace Razryvnaya_machine_VKR
             this.button_add = new System.Windows.Forms.Button();
             this.button_download = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +107,22 @@ namespace Razryvnaya_machine_VKR
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.report1 = new FastReport.Report();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -157,7 +164,7 @@ namespace Razryvnaya_machine_VKR
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.Location = new System.Drawing.Point(1036, 331);
+            this.button5.Location = new System.Drawing.Point(958, 339);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(157, 45);
             this.button5.TabIndex = 108;
@@ -168,7 +175,7 @@ namespace Razryvnaya_machine_VKR
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(1036, 401);
+            this.button4.Location = new System.Drawing.Point(958, 409);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(157, 45);
             this.button4.TabIndex = 107;
@@ -184,7 +191,7 @@ namespace Razryvnaya_machine_VKR
             this.groupBox2.Controls.Add(this.button_add);
             this.groupBox2.Controls.Add(this.button_download);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(1053, 72);
+            this.groupBox2.Location = new System.Drawing.Point(975, 80);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(126, 232);
             this.groupBox2.TabIndex = 106;
@@ -238,63 +245,24 @@ namespace Razryvnaya_machine_VKR
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column33,
+            this.Column3,
             this.Column4,
             this.Column5,
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16});
             this.dataGridView1.Location = new System.Drawing.Point(3, 30);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1027, 472);
+            this.dataGridView1.Size = new System.Drawing.Size(910, 472);
             this.dataGridView1.TabIndex = 105;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Номер_испытания";
-            this.Column2.Name = "Column2";
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "label26";
-            this.Column33.HeaderText = "Дата_испытания";
-            this.Column33.Name = "Column33";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Начальный_диаметр_сечения,мм";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Диаметр_сечения_после_разрыва,мм";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Относительное_удлиннение,%";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Относительное_сужение,%";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Предел_текучести_(условный),кгс/мм²";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Временное_сопротивление,кгс/мм²";
-            this.Column9.Name = "Column9";
             // 
             // menuStrip2
             // 
@@ -755,9 +723,9 @@ namespace Razryvnaya_machine_VKR
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(650, 211);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(145, 13);
+            this.label8.Size = new System.Drawing.Size(142, 13);
             this.label8.TabIndex = 74;
-            this.label8.Text = " Длина после разрыва, мм";
+            this.label8.Text = "Длина после разрыва, мм";
             // 
             // label7
             // 
@@ -891,6 +859,87 @@ namespace Razryvnaya_machine_VKR
             this.report1.ReportResourceString = resources.GetString("report1.ReportResourceString");
             this.report1.Tag = null;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Номер_испытания";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "label26";
+            this.Column3.HeaderText = "Дата_испытания";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Относительное_удлиннение,%";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Относительное_сужение,%";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Предел_текучести_(условный),кгс/мм²";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Временное_сопротивление,кгс/мм²";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Начальный_диаметр_сечения,мм";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Начальная_толщина_сечения,мм";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Начальная_ширина_сечения,мм";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Расчётная_длина,мм";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Рабочая_длина,мм";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Длина_после_разрыва,мм";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Диаметр_сечения_после_разрыва,мм";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Значение_максимума,кгс";
+            this.Column15.Name = "Column15";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Значение_P02,кгс";
+            this.Column16.Name = "Column16";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -997,13 +1046,20 @@ namespace Razryvnaya_machine_VKR
         private FastReport.Report report1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
     }
 }
 
